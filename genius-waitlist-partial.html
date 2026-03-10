@@ -1,0 +1,431 @@
+<!-- /partials/genius-waitlist.html -->
+<!-- 
+  Embed anywhere on the .org with:
+  <div id="genius-waitlist"></div>
+  <script>
+    fetch('/partials/genius-waitlist.html')
+      .then(r => r.text())
+      .then(html => document.getElementById('genius-waitlist').innerHTML = html);
+  </script>
+
+  OR just paste this <section> block directly into any page.
+-->
+
+<section class="section genius-waitlist-section" id="claim-handle">
+  <div class="container">
+
+    <div class="waitlist-card">
+
+      <div class="waitlist-header">
+        <span class="kicker">Coming Soon</span>
+        <h2 class="waitlist-title">Claim your <span class="handle-preview" id="handleDisplay">*.genius</span> identity</h2>
+        <p class="waitlist-sub">
+          Every member of the Genius ecosystem gets a human-readable identity handle.
+          One name. Every platform. Your wallet, badges, and reputation — all in one place.
+        </p>
+      </div>
+
+      <div class="waitlist-examples" aria-hidden="true">
+        <span class="example-handle">desiree.genius</span>
+        <span class="example-handle">phoenix.genius</span>
+        <span class="example-handle">rockitwomen.genius</span>
+        <span class="example-handle">earthtone.genius</span>
+      </div>
+
+      <form class="waitlist-form"
+            action="https://formspree.io/f/xdalgvva"
+            method="POST"
+            id="waitlistForm">
+
+        <input type="hidden" name="_subject" value="New *.genius Handle Waitlist Signup" />
+        <input type="hidden" name="source" value="glc-org-waitlist" />
+
+        <div class="waitlist-fields">
+
+          <div class="handle-field-wrap">
+            <div class="handle-input-row">
+              <input
+                type="text"
+                name="desired_handle"
+                id="handleInput"
+                class="handle-input"
+                placeholder="yourname"
+                maxlength="32"
+                autocomplete="off"
+                autocapitalize="off"
+                spellcheck="false"
+                oninput="previewHandle(this.value)"
+              />
+              <span class="handle-suffix">.genius</span>
+            </div>
+            <p class="handle-hint" id="handleHint">3–32 characters. Lowercase letters, numbers, hyphens.</p>
+          </div>
+
+          <label class="waitlist-label">
+            Full Name
+            <input type="text" name="full_name" placeholder="Your name" class="waitlist-input" />
+          </label>
+
+          <label class="waitlist-label">
+            Email *
+            <input type="email" name="email" placeholder="you@example.com" class="waitlist-input" required />
+          </label>
+
+        </div>
+
+        <div class="waitlist-submit-row">
+          <button class="btn waitlist-btn" type="submit" id="waitlistSubmitBtn">
+            Reserve my handle
+          </button>
+          <p class="waitlist-fine">
+            No spam. We'll only email you when claiming opens.
+          </p>
+        </div>
+
+        <div class="waitlist-status" id="waitlistStatus" style="display:none;"></div>
+
+      </form>
+
+      <div class="waitlist-badges">
+        <p class="badges-label">Handles come with verified badges for:</p>
+        <div class="badge-pills">
+          <span class="badge-pill">🧠 STEAM Identity</span>
+          <span class="badge-pill">💼 Interview Verified</span>
+          <span class="badge-pill">🏢 Employer Certified</span>
+          <span class="badge-pill">🔗 Wallet Connected</span>
+          <span class="badge-pill">🌱 RockIT Women</span>
+          <span class="badge-pill">🐴 Breeder Verified</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+/* ── Waitlist Section ───────────────────────────────────────── */
+.genius-waitlist-section {
+  padding: 48px 0 64px;
+}
+
+.waitlist-card {
+  background: linear-gradient(135deg,
+    rgba(40,168,72,.07) 0%,
+    rgba(255,255,255,.02) 60%,
+    rgba(40,168,72,.04) 100%
+  );
+  border: 1px solid rgba(40,168,72,.28);
+  border-radius: 24px;
+  padding: 48px 40px;
+  max-width: 680px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.waitlist-card::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 240px; height: 240px;
+  background: radial-gradient(circle, rgba(40,168,72,.12), transparent 70%);
+  pointer-events: none;
+}
+
+.waitlist-header {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.waitlist-title {
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 10px 0 12px;
+  line-height: 1.1;
+}
+
+.handle-preview {
+  color: var(--accent);
+  font-family: var(--mono);
+  transition: all .2s ease;
+}
+
+.waitlist-sub {
+  color: rgba(255,255,255,.62);
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* ── Example handles ticker ── */
+.waitlist-examples {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 20px 0 28px;
+}
+
+.example-handle {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: rgba(40,168,72,.75);
+  background: rgba(40,168,72,.08);
+  border: 1px solid rgba(40,168,72,.18);
+  border-radius: 999px;
+  padding: 5px 12px;
+  letter-spacing: .04em;
+}
+
+/* ── Form fields ── */
+.waitlist-form { display: grid; gap: 0; }
+
+.waitlist-fields {
+  display: grid;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.waitlist-label {
+  display: grid;
+  gap: 6px;
+  font-size: 13px;
+  color: rgba(255,255,255,.60);
+}
+
+.waitlist-input {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.03);
+  padding: 11px 14px;
+  color: #fff;
+  outline: none;
+  font-size: 14px;
+  font-family: var(--font);
+  transition: border-color .2s, box-shadow .2s;
+}
+
+.waitlist-input:focus {
+  border-color: rgba(40,168,72,.55);
+  box-shadow: 0 0 0 4px rgba(40,168,72,.12);
+}
+
+/* ── Handle field ── */
+.handle-field-wrap { display: grid; gap: 6px; }
+
+.handle-input-row {
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 12px;
+  background: rgba(255,255,255,.03);
+  overflow: hidden;
+  transition: border-color .2s, box-shadow .2s;
+}
+
+.handle-input-row:focus-within {
+  border-color: rgba(40,168,72,.55);
+  box-shadow: 0 0 0 4px rgba(40,168,72,.12);
+}
+
+.handle-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 11px 4px 11px 14px;
+  color: #fff;
+  outline: none;
+  font-size: 15px;
+  font-family: var(--mono);
+  letter-spacing: .04em;
+  min-width: 0;
+}
+
+.handle-suffix {
+  font-family: var(--mono);
+  font-size: 15px;
+  color: var(--accent);
+  padding: 11px 14px 11px 2px;
+  white-space: nowrap;
+  user-select: none;
+  opacity: .85;
+}
+
+.handle-hint {
+  font-size: 12px;
+  color: rgba(255,255,255,.38);
+  margin: 0;
+}
+
+.handle-hint.error { color: #ff6b6b; }
+.handle-hint.ok    { color: var(--accent); }
+
+/* ── Submit row ── */
+.waitlist-submit-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.waitlist-btn {
+  padding: 12px 24px;
+  font-size: 15px;
+}
+
+.waitlist-fine {
+  font-size: 12px;
+  color: rgba(255,255,255,.38);
+  margin: 0;
+}
+
+/* ── Status message ── */
+.waitlist-status {
+  margin-top: 14px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.waitlist-status.success {
+  background: rgba(40,168,72,.12);
+  border: 1px solid rgba(40,168,72,.28);
+  color: #6edb8f;
+}
+
+.waitlist-status.error {
+  background: rgba(255,100,100,.10);
+  border: 1px solid rgba(255,100,100,.25);
+  color: #ff8f8f;
+}
+
+/* ── Badges ── */
+.waitlist-badges {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,.08);
+}
+
+.badges-label {
+  font-size: 12px;
+  color: rgba(255,255,255,.40);
+  text-transform: uppercase;
+  letter-spacing: .10em;
+  margin: 0 0 12px;
+  text-align: center;
+}
+
+.badge-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.badge-pill {
+  font-size: 12px;
+  color: rgba(255,255,255,.65);
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 999px;
+  padding: 5px 12px;
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .waitlist-card { padding: 32px 20px; }
+  .waitlist-submit-row { flex-direction: column; align-items: flex-start; }
+}
+</style>
+
+<script>
+/* Handle live preview */
+function previewHandle(val) {
+  const clean = val.toLowerCase().replace(/[^a-z0-9_-]/g, '');
+  const display = document.getElementById('handleDisplay');
+  const hint    = document.getElementById('handleHint');
+
+  if (!clean) {
+    display.textContent = '*.genius';
+    hint.textContent = '3–32 characters. Lowercase letters, numbers, hyphens.';
+    hint.className = 'handle-hint';
+    return;
+  }
+
+  display.textContent = clean + '.genius';
+
+  /* Validation */
+  const reserved = ['admin','genius','music','talent','ai','horses','founder','rockitwomen','steam'];
+  if (clean.length < 3) {
+    hint.textContent = 'Too short — minimum 3 characters.';
+    hint.className = 'handle-hint error';
+  } else if (clean.length > 32) {
+    hint.textContent = 'Too long — maximum 32 characters.';
+    hint.className = 'handle-hint error';
+  } else if (reserved.includes(clean)) {
+    hint.textContent = `"${clean}.genius" is a reserved handle — try something more specific.`;
+    hint.className = 'handle-hint error';
+  } else {
+    hint.textContent = `✓ ${clean}.genius looks available — reserve it below.`;
+    hint.className = 'handle-hint ok';
+  }
+}
+
+/* Form submission feedback */
+(function() {
+  const form = document.getElementById('waitlistForm');
+  if (!form) return;
+
+  /* Formspree AJAX submit */
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn    = document.getElementById('waitlistSubmitBtn');
+    const status = document.getElementById('waitlistStatus');
+    const handle = document.getElementById('handleInput').value.trim();
+    const hint   = document.getElementById('handleHint');
+
+    /* Block if handle invalid */
+    if (handle && (handle.length < 3 || hint.classList.contains('error'))) {
+      status.className = 'waitlist-status error';
+      status.textContent = 'Please choose a valid handle before submitting.';
+      status.style.display = 'block';
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Reserving…';
+
+    try {
+      const data = new FormData(form);
+      const res  = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (res.ok) {
+        status.className = 'waitlist-status success';
+        status.innerHTML = handle
+          ? `🎉 <strong>${handle}.genius</strong> is on the list! We'll email you when claiming opens.`
+          : `🎉 You're on the list! We'll email you when claiming opens.`;
+        status.style.display = 'block';
+        form.reset();
+        document.getElementById('handleDisplay').textContent = '*.genius';
+        btn.textContent = 'You\'re on the list!';
+      } else {
+        throw new Error('Server error');
+      }
+    } catch {
+      status.className = 'waitlist-status error';
+      status.textContent = 'Something went wrong. Please try again or email us directly.';
+      status.style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = 'Reserve my handle';
+    }
+  });
+})();
+</script>

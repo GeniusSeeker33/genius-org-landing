@@ -1,0 +1,153 @@
+<!-- /thank-you.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Thank You | Genius Loves Company</title>
+
+  <meta name="description" content="Thank you for connecting with Genius Loves Company." />
+  <meta name="robots" content="noindex" />
+
+  <link rel="canonical" href="https://geniuslovescompany.org/thank-you.html" />
+  <link rel="icon" href="/img/brand/favicon.png" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Thank You | Genius Loves Company" />
+  <meta property="og:description" content="We received your submission. Someone from the Genius team will be in touch soon." />
+  <meta property="og:url" content="https://geniuslovescompany.org/thank-you.html" />
+  <meta property="og:type" content="website" />
+
+  <link rel="stylesheet" href="/css/styles.css" />
+
+  <style>
+    .thankyou-wrap {
+      min-height: 72vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 0;
+    }
+
+    .thankyou-card {
+      text-align: center;
+      max-width: 560px;
+      margin: 0 auto;
+      padding: 56px 40px;
+      background: linear-gradient(135deg,
+        rgba(40,168,72,.07) 0%,
+        rgba(255,255,255,.02) 60%,
+        rgba(40,168,72,.03) 100%
+      );
+      border: 1px solid rgba(40,168,72,.26);
+      border-radius: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .thankyou-card::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 260px; height: 260px;
+      background: radial-gradient(circle, rgba(40,168,72,.10), transparent 70%);
+      pointer-events: none;
+    }
+
+    .thankyou-icon {
+      font-size: 52px;
+      margin-bottom: 20px;
+      display: block;
+      animation: popIn .5s cubic-bezier(.175,.885,.32,1.275) both;
+    }
+
+    @keyframes popIn {
+      from { transform: scale(0.5); opacity: 0; }
+      to   { transform: scale(1);   opacity: 1; }
+    }
+
+    .thankyou-card h1 {
+      font-size: clamp(26px, 3.5vw, 38px);
+      margin-bottom: 14px;
+      letter-spacing: -0.02em;
+    }
+
+    .thankyou-card p {
+      color: rgba(255,255,255,.65);
+      font-size: 16px;
+      line-height: 1.65;
+      margin-bottom: 14px;
+    }
+
+    .thankyou-card p:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .thankyou-divider {
+      border: 0;
+      border-top: 1px solid rgba(255,255,255,.10);
+      margin: 28px 0;
+    }
+
+    .thankyou-next-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: rgba(255,255,255,.35);
+      margin-bottom: 16px;
+    }
+
+    .thankyou-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+
+    @media (max-width: 480px) {
+      .thankyou-card { padding: 40px 20px; }
+    }
+  </style>
+</head>
+
+<body id="top">
+  <div id="site-header"></div>
+
+  <main id="main" class="page">
+    <div class="container thankyou-wrap">
+      <div class="thankyou-card">
+
+        <span class="thankyou-icon">✅</span>
+
+        <h1>You're in the mix.</h1>
+
+        <p>
+          We received your submission and someone from the Genius team
+          will review it personally. Expect to hear back within
+          <strong>2 business days</strong>.
+        </p>
+
+        <p>
+          In the meantime, explore the ecosystem — follow aligned leaders,
+          find opportunities, or claim your <code>*.genius</code> identity handle below.
+        </p>
+
+        <hr class="thankyou-divider" />
+
+        <p class="thankyou-next-label">What's next</p>
+
+        <div class="thankyou-actions">
+          <a class="btn" href="/follow.html">Follow leaders</a>
+          <a class="btn btn-ghost" href="/findopportunities.html">Find opportunities</a>
+          <a class="btn btn-ghost" href="/#claim-handle">Claim your handle</a>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="/js/main.js"></script>
+</body>
+</html>
